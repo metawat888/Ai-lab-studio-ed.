@@ -89,6 +89,20 @@
         /* Hide scrollbar for mobile navigation */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Flowing Text Gradient Effect */
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        .animate-gradient-flow {
+            background: linear-gradient(to right, #ffffff 0%, #0ea5e9 25%, #ffffff 50%, #0ea5e9 75%, #ffffff 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: gradientFlow 4s linear infinite;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col text-gray-800 relative z-0">
@@ -101,11 +115,11 @@
         
         <!-- Brand / Logo (Top Left) -->
         <div class="flex items-center gap-3 cursor-pointer shrink-0 group" onclick="navigateTo('home', event)">
-            <div class="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center shadow-inner group-hover:shadow-[0_0_15px_rgba(14,165,233,0.4)] transition-all duration-300 border border-slate-700">
-                <i class="fa-solid fa-flask text-white text-xl group-hover:scale-110 transition-transform duration-300"></i>
+            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-inner group-hover:shadow-[0_0_15px_rgba(14,165,233,0.4)] transition-all duration-300 border border-slate-700 overflow-hidden">
+                <img src="https://live.staticflickr.com/65535/55606251437_08dca86382_c.jpg" alt="Ai Lab Studio Education Logo" class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" />
             </div>
-            <span class="text-xl sm:text-2xl font-black tracking-wide text-white font-inter transition-all duration-300 drop-shadow-sm">
-                <span class="animate-wiggle">A</span>i Lab Studio Ed.
+            <span class="text-xl sm:text-2xl font-black tracking-wide font-inter drop-shadow-md animate-gradient-flow transition-transform duration-300 group-hover:scale-[1.02]">
+                Ai Lab Studio Education
             </span>
         </div>
 
@@ -547,12 +561,16 @@
                 const activeColor = link.getAttribute('data-active-color');
                 const hoverColor = link.getAttribute('data-hover-color');
                 
-                link.classList.remove(activeColor);
-                link.querySelector('i').classList.remove(activeColor);
+                if (activeColor) link.classList.remove(activeColor);
                 
-                link.classList.add(defaultColor);
-                link.classList.add(hoverColor);
-                link.querySelector('i').style.color = "inherit"; 
+                const icon = link.querySelector('i');
+                if (icon) {
+                    if (activeColor) icon.classList.remove(activeColor);
+                    icon.style.color = "inherit"; 
+                }
+                
+                if (defaultColor) link.classList.add(defaultColor);
+                if (hoverColor) link.classList.add(hoverColor);
             });
 
             if(event && event.currentTarget) {
@@ -560,9 +578,15 @@
                 const activeColor = activeLink.getAttribute('data-active-color');
                 const defaultColor = activeLink.getAttribute('data-default-color');
                 
-                activeLink.classList.remove(defaultColor);
-                activeLink.classList.add(activeColor);
-                activeLink.querySelector('i').style.color = "inherit";
+                if (activeColor && defaultColor) {
+                    activeLink.classList.remove(defaultColor);
+                    activeLink.classList.add(activeColor);
+                }
+                
+                const activeIcon = activeLink.querySelector('i');
+                if (activeIcon) {
+                    activeIcon.style.color = "inherit";
+                }
             }
 
             // Toggle Footer Visibility
