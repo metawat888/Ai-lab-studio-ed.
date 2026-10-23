@@ -85,6 +85,10 @@
         .start-opacity-0 { opacity: 0; }
         
         iframe { background: transparent; }
+
+        /* Hide scrollbar for mobile navigation */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col text-gray-800 relative z-0">
@@ -106,44 +110,44 @@
         </div>
 
         <!-- Nav Links -->
-        <div class="flex flex-wrap items-center justify-center xl:justify-end gap-3 sm:gap-5 lg:gap-7 text-sm w-full xl:w-auto" id="nav-menu">
+        <div class="flex flex-nowrap items-center justify-start xl:justify-end gap-4 sm:gap-6 lg:gap-7 text-sm w-full xl:w-auto overflow-x-auto scrollbar-hide py-1" id="nav-menu">
             
-            <a href="#" onclick="navigateTo('home', event)" class="nav-link flex items-center gap-1.5 transition-colors duration-300 cursor-pointer group text-white hover:text-white" data-active-color="text-white" data-hover-color="hover:text-white" data-default-color="text-gray-400">
+            <a href="#" onclick="navigateTo('home', event)" class="nav-link shrink-0 flex items-center gap-1.5 transition-colors duration-300 cursor-pointer group text-white hover:text-white" data-active-color="text-white" data-hover-color="hover:text-white" data-default-color="text-gray-400">
                 <i class="fa-solid fa-house text-lg group-hover:scale-110 transition-transform duration-300" style="color: inherit;"></i>
                 <span class="font-medium tracking-wide">หน้าหลัก</span>
             </a>
 
-            <a href="#" onclick="navigateTo('ailab', event)" class="nav-link flex items-center gap-1.5 transition-colors duration-300 cursor-pointer group text-gray-400 hover:text-[#0ea5e9]" data-active-color="text-[#0ea5e9]" data-hover-color="hover:text-[#0ea5e9]" data-default-color="text-gray-400">
+            <a href="#" onclick="navigateTo('ailab', event)" class="nav-link shrink-0 flex items-center gap-1.5 transition-colors duration-300 cursor-pointer group text-gray-400 hover:text-[#0ea5e9]" data-active-color="text-[#0ea5e9]" data-hover-color="hover:text-[#0ea5e9]" data-default-color="text-gray-400">
                 <i class="fa-solid fa-flask text-lg group-hover:scale-110 transition-transform duration-300" style="color: inherit;"></i>
                 <span class="font-medium tracking-wide">Ai Lab</span>
             </a>
 
-            <a href="#" onclick="navigateTo('worksheet', event)" class="nav-link flex items-center gap-1.5 transition-colors duration-300 cursor-pointer group text-gray-400 hover:text-[#f97316]" data-active-color="text-[#f97316]" data-hover-color="hover:text-[#f97316]" data-default-color="text-gray-400">
+            <a href="#" onclick="navigateTo('worksheet', event)" class="nav-link shrink-0 flex items-center gap-1.5 transition-colors duration-300 cursor-pointer group text-gray-400 hover:text-[#f97316]" data-active-color="text-[#f97316]" data-hover-color="hover:text-[#f97316]" data-default-color="text-gray-400">
                 <i class="fa-solid fa-clipboard text-lg group-hover:scale-110 transition-transform duration-300" style="color: inherit;"></i>
                 <span class="font-medium tracking-wide">ใบงาน</span>
             </a>
             
-            <a href="#" onclick="navigateTo('classroom', event)" class="nav-link flex items-center gap-1.5 transition-colors duration-300 cursor-pointer group text-gray-400 hover:text-[#10B981]" data-active-color="text-[#10B981]" data-hover-color="hover:text-[#10B981]" data-default-color="text-gray-400">
+            <a href="#" onclick="navigateTo('classroom', event)" class="nav-link shrink-0 flex items-center gap-1.5 transition-colors duration-300 cursor-pointer group text-gray-400 hover:text-[#10B981]" data-active-color="text-[#10B981]" data-hover-color="hover:text-[#10B981]" data-default-color="text-gray-400">
                 <i class="fa-solid fa-school-flag text-lg group-hover:scale-110 transition-transform duration-300" style="color: inherit;"></i>
                 <span class="font-medium tracking-wide">ห้องเรียน</span>
             </a>
 
-            <a href="#" onclick="navigateTo('exams', event)" class="nav-link flex items-center gap-1.5 transition-colors duration-300 cursor-pointer group text-gray-400 hover:text-[#ef4444]" data-active-color="text-[#ef4444]" data-hover-color="hover:text-[#ef4444]" data-default-color="text-gray-400">
+            <a href="#" onclick="navigateTo('exams', event)" class="nav-link shrink-0 flex items-center gap-1.5 transition-colors duration-300 cursor-pointer group text-gray-400 hover:text-[#ef4444]" data-active-color="text-[#ef4444]" data-hover-color="hover:text-[#ef4444]" data-default-color="text-gray-400">
                 <i class="fa-solid fa-book text-lg group-hover:scale-110 transition-transform duration-300" style="color: inherit;"></i>
                 <span class="font-medium tracking-wide">คลังข้อสอบ</span>
             </a>
             
-            <a href="#" onclick="navigateTo('pa', event)" class="nav-link flex items-center gap-1.5 transition-colors duration-300 cursor-pointer group text-gray-400 hover:text-[#8b5cf6]" data-active-color="text-[#8b5cf6]" data-hover-color="hover:text-[#8b5cf6]" data-default-color="text-gray-400">
+            <a href="#" onclick="navigateTo('pa', event)" class="nav-link shrink-0 flex items-center gap-1.5 transition-colors duration-300 cursor-pointer group text-gray-400 hover:text-[#8b5cf6]" data-active-color="text-[#8b5cf6]" data-hover-color="hover:text-[#8b5cf6]" data-default-color="text-gray-400">
                 <i class="fa-solid fa-file text-lg group-hover:scale-110 transition-transform duration-300" style="color: inherit;"></i>
                 <span class="font-medium tracking-wide">รายงาน PA</span>
             </a>
 
-            <a href="#" onclick="navigateTo('development', event)" class="nav-link flex items-center gap-1.5 transition-colors duration-300 cursor-pointer group text-gray-400 hover:text-[#3b82f6]" data-active-color="text-[#3b82f6]" data-hover-color="hover:text-[#3b82f6]" data-default-color="text-gray-400">
+            <a href="#" onclick="navigateTo('development', event)" class="nav-link shrink-0 flex items-center gap-1.5 transition-colors duration-300 cursor-pointer group text-gray-400 hover:text-[#3b82f6]" data-active-color="text-[#3b82f6]" data-hover-color="hover:text-[#3b82f6]" data-default-color="text-gray-400">
                 <i class="fa-solid fa-user text-lg group-hover:scale-110 transition-transform duration-300" style="color: inherit;"></i>
                 <span class="font-medium tracking-wide">รายงานการพัฒนาตน</span>
             </a>
 
-            <a href="#" onclick="navigateTo('research', event)" class="nav-link flex items-center gap-1.5 transition-colors duration-300 cursor-pointer group text-gray-400 hover:text-[#ec4899]" data-active-color="text-[#ec4899]" data-hover-color="hover:text-[#ec4899]" data-default-color="text-gray-400">
+            <a href="#" onclick="navigateTo('research', event)" class="nav-link shrink-0 flex items-center gap-1.5 transition-colors duration-300 cursor-pointer group text-gray-400 hover:text-[#ec4899]" data-active-color="text-[#ec4899]" data-hover-color="hover:text-[#ec4899]" data-default-color="text-gray-400">
                 <i class="fa-solid fa-r text-lg group-hover:scale-110 transition-transform duration-300" style="color: inherit;"></i>
                 <span class="font-medium tracking-wide">งานวิจัย</span>
             </a>
@@ -498,11 +502,8 @@
             <i class="fa-solid fa-xmark"></i>
         </button>
         <div id="iframe-modal-content" class="w-full h-full max-w-[1600px] bg-white rounded-2xl overflow-hidden shadow-2xl relative z-[105] transform scale-95 transition-transform duration-300 flex flex-col" onclick="event.stopPropagation()">
-            <div class="bg-gray-100 h-10 w-full border-b border-gray-200 flex items-center px-4 gap-2 shrink-0">
-                <div class="w-3 h-3 rounded-full bg-red-400"></div>
-                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-                <div class="w-3 h-3 rounded-full bg-green-400"></div>
-                <span id="iframe-modal-title" class="ml-3 text-xs font-medium text-gray-500 font-inter tracking-wide">Document Viewer</span>
+            <div class="bg-gray-100 h-10 w-full border-b border-gray-200 flex items-center px-4 shrink-0">
+                <span id="iframe-modal-title" class="text-xs font-medium text-gray-500 font-inter tracking-wide">Document Viewer</span>
             </div>
             <iframe id="modal-iframe" src="" class="w-full flex-grow border-0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
